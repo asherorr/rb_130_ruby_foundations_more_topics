@@ -5,7 +5,8 @@ def select(array)
   final_arr = []
   
   while counter < array.size
-    final_arr.push(array[counter]) if yield(array[counter]) == true
+    current_element = array[counter]
+    final_arr.push(current_element) if yield(current_element)
     counter += 1
   end
   
