@@ -95,6 +95,22 @@ class TodoList
     counter == todos.size
   end
 
+  def item_at(index)
+    if todos[index].nil?
+      raise IndexError
+    else
+      todos[index]
+    end
+  end
+
+  def mark_done_at(index)
+    if todos[index].nil?
+      raise IndexError
+    else
+      todos[index].done!
+    end
+  end
+
 
   # rest of class needs implementation
 
@@ -140,42 +156,42 @@ p list.done?                     # returns true if all todos in the list are don
 # ---- Retrieving an item in the list ----
 
 # item_at
-list.item_at                    # raises ArgumentError
-list.item_at(1)                 # returns 2nd item in list (zero based index)
-list.item_at(100)               # raises IndexError
+#list.item_at                    # raises ArgumentError
+p list.item_at(1)                 # returns 2nd item in list (zero based index)
+# p list.item_at(100)               # raises IndexError
 
 # ---- Marking items in the list -----
 
 # mark_done_at
-list.mark_done_at               # raises ArgumentError
+# list.mark_done_at               # raises ArgumentError
 list.mark_done_at(1)            # marks the 2nd item as done
-list.mark_done_at(100)          # raises IndexError
+# list.mark_done_at(100)          # raises IndexError
 
-# mark_undone_at
-list.mark_undone_at             # raises ArgumentError
-list.mark_undone_at(1)          # marks the 2nd item as not done,
-list.mark_undone_at(100)        # raises IndexError
+# # mark_undone_at
+# list.mark_undone_at             # raises ArgumentError
+# list.mark_undone_at(1)          # marks the 2nd item as not done,
+# list.mark_undone_at(100)        # raises IndexError
 
 # done!
-list.done!                      # marks all items as done
+# list.done!                      # marks all items as done
 
-# ---- Deleting from the list -----
+# # ---- Deleting from the list -----
 
-# shift
-list.shift                      # removes and returns the first item in list
+# # shift
+# list.shift                      # removes and returns the first item in list
 
-# pop
-list.pop                        # removes and returns the last item in list
+# # pop
+# list.pop                        # removes and returns the last item in list
 
-# remove_at
-list.remove_at                  # raises ArgumentError
-list.remove_at(1)               # removes and returns the 2nd item
-list.remove_at(100)             # raises IndexError
+# # remove_at
+# list.remove_at                  # raises ArgumentError
+# list.remove_at(1)               # removes and returns the 2nd item
+# list.remove_at(100)             # raises IndexError
 
-# ---- Outputting the list -----
+# # ---- Outputting the list -----
 
-# to_s
-list.to_s                      # returns string representation of the list
+# # to_s
+# list.to_s                      # returns string representation of the list
 
 # ---- Today's Todos ----
 # [ ] Buy milk
