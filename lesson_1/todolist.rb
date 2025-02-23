@@ -139,17 +139,10 @@ class TodoList
   end
 
   def each
-    counter = 0
-    
-    while counter < todos.size
-      yield(todos[counter])
-      counter += 1
+    todos.each do |todo|
+      yield(todo)
     end
   end
-
-
-  # rest of class needs implementation
-
 end
 
 #Now implement the rest of the `TodoList` so that we can write this code:
