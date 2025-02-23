@@ -136,7 +136,15 @@ class TodoList
   def to_s
     puts "--- Today's Todos ----"
     todos.each { |todo_item| puts todo_item }
-    nil
+  end
+
+  def each
+    counter = 0
+    
+    while counter < todos.size
+      yield(todos[counter])
+      counter += 1
+    end
   end
 
 
@@ -221,7 +229,10 @@ p list.item_at(1)          # marks the 2nd item as not done,
 # # ---- Outputting the list -----
 
 # # to_s
-list.to_s                      # returns string representation of the list
+# list.to_s                      # returns string representation of the list
+list.each do |todo|
+  puts todo
+end
 
 # ---- Today's Todos ----
 # [ ] Buy milk
