@@ -111,6 +111,34 @@ class TodoList
     end
   end
 
+  def mark_undone_at(index)
+    raise IndexError if todos[index].nil?
+    todos[index].undone!
+  end
+
+  def done!
+    todos.each {|todo_item| todo_item.done!}
+  end
+
+  def shift
+    todos.shift
+  end
+
+  def pop
+    todos.pop
+  end
+
+  def remove_at(index)
+    raise IndexError if todos[index].nil?
+    todos.delete_at(index)
+  end
+
+  def to_s
+    puts "--- Today's Todos ----"
+    todos.each { |todo_item| puts todo_item }
+    nil
+  end
+
 
   # rest of class needs implementation
 
@@ -165,11 +193,13 @@ p list.item_at(1)                 # returns 2nd item in list (zero based index)
 # mark_done_at
 # list.mark_done_at               # raises ArgumentError
 list.mark_done_at(1)            # marks the 2nd item as done
+p list.item_at(1)
 # list.mark_done_at(100)          # raises IndexError
 
 # # mark_undone_at
 # list.mark_undone_at             # raises ArgumentError
-# list.mark_undone_at(1)          # marks the 2nd item as not done,
+list.mark_undone_at(1)
+p list.item_at(1)          # marks the 2nd item as not done,
 # list.mark_undone_at(100)        # raises IndexError
 
 # done!
@@ -191,7 +221,7 @@ list.mark_done_at(1)            # marks the 2nd item as done
 # # ---- Outputting the list -----
 
 # # to_s
-# list.to_s                      # returns string representation of the list
+list.to_s                      # returns string representation of the list
 
 # ---- Today's Todos ----
 # [ ] Buy milk
