@@ -155,6 +155,14 @@ class TodoList
 
     list
   end
+
+  def find_by_title(todo_item_title)
+    res = select do |todo_item| 
+      todo_item.title == todo_item_title
+    end
+
+    res.todos[0] unless res.todos.empty?
+  end
 end
 
 #Now implement the rest of the `TodoList` so that we can write this code:
@@ -180,39 +188,39 @@ list.add(todo3)                 # adds todo3 to end of list, returns list
 # ---- Interrogating the list -----
 
 # size
-p list.size                       # returns 3
+# p list.size                       # returns 3
 
 # first
-p list.first                      # returns todo1, which is the first item in the list
+# p list.first                      # returns todo1, which is the first item in the list
 
 # last
-p list.last                       # returns todo3, which is the last item in the list
+# p list.last                       # returns todo3, which is the last item in the list
 
 #to_a
-p list.to_a                      # returns an array of all items in the list
+# p list.to_a                      # returns an array of all items in the list
 
 #done?
-p list.done?                     # returns true if all todos in the list are done, otherwise false
+# p list.done?                     # returns true if all todos in the list are done, otherwise false
 
 # ---- Retrieving an item in the list ----
 
 # item_at
 #list.item_at                    # raises ArgumentError
-p list.item_at(1)                 # returns 2nd item in list (zero based index)
+# p list.item_at(1)                 # returns 2nd item in list (zero based index)
 # p list.item_at(100)               # raises IndexError
 
 # ---- Marking items in the list -----
 
 # mark_done_at
 # list.mark_done_at               # raises ArgumentError
-list.mark_done_at(1)            # marks the 2nd item as done
-p list.item_at(1)
+# list.mark_done_at(1)            # marks the 2nd item as done
+# p list.item_at(1)
 # list.mark_done_at(100)          # raises IndexError
 
 # # mark_undone_at
 # list.mark_undone_at             # raises ArgumentError
-list.mark_undone_at(1)
-p list.item_at(1)          # marks the 2nd item as not done,
+# list.mark_undone_at(1)
+# p list.item_at(1)          # marks the 2nd item as not done,
 # list.mark_undone_at(100)        # raises IndexError
 
 # done!
@@ -243,6 +251,8 @@ res = list.select do |todo|
   todo.done? == false
 end
 p res
+
+p list.find_by_title("Buy milk")
 
 # ---- Today's Todos ----
 # [ ] Buy milk
