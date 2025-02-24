@@ -142,6 +142,8 @@ class TodoList
     todos.each do |todo|
       yield(todo)
     end
+
+    self
   end
 
   def select
