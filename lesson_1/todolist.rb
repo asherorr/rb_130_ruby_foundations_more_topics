@@ -165,8 +165,14 @@ class TodoList
   end
 
   def all_done
-    res = select do |todo_item|
+    select do |todo_item|
       todo_item.done?
+    end
+  end
+
+  def all_not_done
+    select do |todo_item|
+      todo_item.done? == false
     end
   end
 end
@@ -261,6 +267,8 @@ p res
 p list.find_by_title("Buy milk").done!
 p list.find_by_title("Buy milk")
 p list.all_done
+p list.all_not_done
+
 
 # ---- Today's Todos ----
 # [ ] Buy milk
