@@ -163,6 +163,12 @@ class TodoList
 
     res.todos[0] unless res.todos.empty?
   end
+
+  def all_done
+    res = select do |todo_item|
+      todo_item.done?
+    end
+  end
 end
 
 #Now implement the rest of the `TodoList` so that we can write this code:
@@ -252,7 +258,9 @@ res = list.select do |todo|
 end
 p res
 
+p list.find_by_title("Buy milk").done!
 p list.find_by_title("Buy milk")
+p list.all_done
 
 # ---- Today's Todos ----
 # [ ] Buy milk
