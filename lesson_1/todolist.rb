@@ -143,6 +143,12 @@ class TodoList
       yield(todo)
     end
   end
+
+  def select
+    todos.select do |todo_item|
+      yield(todo_item)
+    end
+  end
 end
 
 #Now implement the rest of the `TodoList` so that we can write this code:
@@ -226,6 +232,11 @@ p list.item_at(1)          # marks the 2nd item as not done,
 list.each do |todo|
   puts todo
 end
+
+res = list.select do |todo|
+  todo.done? == false
+end
+p res
 
 # ---- Today's Todos ----
 # [ ] Buy milk
