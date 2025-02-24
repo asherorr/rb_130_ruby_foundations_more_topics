@@ -145,9 +145,13 @@ class TodoList
   end
 
   def select
-    todos.select do |todo_item|
-      yield(todo_item)
+    list = TodoList.new(title)
+
+    each do |todo_item|
+      list.add(todo_item) if yield(todo_item)
     end
+
+    list
   end
 end
 
