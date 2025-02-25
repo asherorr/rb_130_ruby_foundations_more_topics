@@ -175,6 +175,23 @@ class TodoList
       todo_item.done? == false
     end
   end
+
+  def mark_done(title_of_todo)
+    todo_to_mark = find_by_title(title_of_todo)
+    todo_to_mark.done!
+  end
+
+  def mark_all_done
+    todos.each do |todo_item|
+      mark_done(todo_item.title)
+    end
+  end
+
+  def mark_all_undone
+    todos.each_with_index do |todo_item, idx|
+      mark_undone_at(idx)
+    end
+  end
 end
 
 #Now implement the rest of the `TodoList` so that we can write this code:
@@ -259,15 +276,25 @@ list.each do |todo|
   puts todo
 end
 
-res = list.select do |todo|
-  todo.done? == false
-end
-p res
+# res = list.select do |todo|
+#   todo.done? == false
+# end
 
-p list.find_by_title("Buy milk").done!
-p list.find_by_title("Buy milk")
-p list.all_done
+# p list.find_by_title("Buy milk").done!
+# p list.find_by_title("Buy milk")
+# p list.all_done
+# p list.all_not_done
+# p list.mark_done("Clean room")
+# p list.all_done
+
+# p list
+# p list.all_not_done
+list.mark_done("Buy milk")
 p list.all_not_done
+list.mark_all_done
+p list.all_done
+list.mark_all_undone
+p list
 
 
 # ---- Today's Todos ----
