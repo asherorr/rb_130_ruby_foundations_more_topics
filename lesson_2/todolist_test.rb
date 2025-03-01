@@ -50,5 +50,17 @@ class TodoListTest < Minitest::Test
     assert_equal(false, @list.done?)
   end
 
+  def test_add_raise_error
+    assert_raises(TypeError) { @list.add("string object") }
+    assert_raises(TypeError) { @list.add('hi"') }
+  end
+
+  def test_shovel
+    new_todo = Todo.new("Practice Yoga")
+    @list << new_todo
+    @todos << new_todo
+
+    assert_equal(@todos, @list.to_a)
+  end
 
 end

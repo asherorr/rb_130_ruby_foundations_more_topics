@@ -58,6 +58,10 @@ class TodoList
     end
   end
 
+  def <<(todo)
+    add(todo)
+  end
+
   def size
     todos.size
   end
