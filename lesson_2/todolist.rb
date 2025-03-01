@@ -87,12 +87,7 @@ class TodoList
   end
 
   def done?
-    counter = 0
-    todos.each do |todo_item|
-      counter += 1 if todo_item.done?
-    end
-
-    counter == todos.size
+    todos.all?(&:done?)
   end
 
   def item_at(index)
@@ -272,9 +267,9 @@ list.add(todo3)                 # adds todo3 to end of list, returns list
 
 # # to_s
 # list.to_s                      # returns string representation of the list
-list.each do |todo|
-  puts todo
-end
+# list.each do |todo|
+#   puts todo
+# end
 
 # res = list.select do |todo|
 #   todo.done? == false
@@ -289,12 +284,12 @@ end
 
 # p list
 # p list.all_not_done
-list.mark_done("Buy milk")
-p list.all_not_done
-list.mark_all_done
-p list.all_done
-list.mark_all_undone
-p list
+# list.mark_done("Buy milk")
+# p list.all_not_done
+# list.mark_all_done
+# p list.all_done
+# list.mark_all_undone
+# p list
 
 
 # ---- Today's Todos ----
