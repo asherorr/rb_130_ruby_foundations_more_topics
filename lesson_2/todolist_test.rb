@@ -34,6 +34,10 @@ class TodoListTest < Minitest::Test
     assert_equal(@todo3, @list.last)
   end
 
-  
+  def test_shift
+    shifted_item = @list.shift
+    assert_equal(@todo1, shifted_item)
+    assert_equal([@todo2, @todo3], @list.to_a)
+  end
 
 end
