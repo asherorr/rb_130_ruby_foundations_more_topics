@@ -77,6 +77,14 @@ class TodoListTest < Minitest::Test
     assert_equal(@todo1, @list.item_at(0))
   end
 
-  
+  def test_mark_done_at
+    invalid_idx = @list.size + 1
+    assert_raises(IndexError) { @list.item_at(invalid_idx) }
+
+    @list.mark_done_at(0)
+    assert(@list.first.done?)
+    assert_equal(false, @todo2.done?)
+  end
+
 
 end
