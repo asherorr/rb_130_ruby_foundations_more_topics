@@ -102,5 +102,13 @@ class TodoListTest < Minitest::Test
     end
   end
 
+  def test_remove_at
+    invalid_idx = @list.size + 1
+    assert_raises(IndexError) { @list.remove_at(invalid_idx) }
+
+    @list.remove_at(0)
+    assert(@list.size == 2)
+  end
+
 
 end
