@@ -136,5 +136,13 @@ class TodoListTest < Minitest::Test
     @list.mark_undone_at(0)
   end
 
+  def test_each
+    counter = 0
+    @list.each do |item|
+      counter += 1
+    end
+    assert(counter == @list.size)
+  end
+
 
 end
