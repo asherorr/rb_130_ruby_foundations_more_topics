@@ -144,5 +144,13 @@ class TodoListTest < Minitest::Test
     assert(counter == @list.size)
   end
 
+  def test_does_each_return_original_object
+    calling_object = @list.each {|item| nil}
+    assert_equal(calling_object, @list)
+  end
+
+  def test_select
+  end
+
 
 end
