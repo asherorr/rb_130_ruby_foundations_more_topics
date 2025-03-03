@@ -106,8 +106,23 @@ class TodoListTest < Minitest::Test
     invalid_idx = @list.size + 1
     assert_raises(IndexError) { @list.remove_at(invalid_idx) }
 
-    @list.remove_at(0)
+    removed_element = @list.remove_at(0)
     assert(@list.size == 2)
+    @list.add(removed_element)
+  end
+
+  def test_to_s
+    output = <<~OUTPUT.chomp
+    ---- Today's Todos ----
+    [ ] Buy milk
+    [ ] Clean room
+    [ ] Go to gym
+    OUTPUT
+  
+    assert_equal(output, @list.to_s)
+  end
+
+  def test_to_s_when_todo_is_done
   end
 
 

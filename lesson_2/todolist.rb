@@ -133,8 +133,9 @@ class TodoList
   end
 
   def to_s
-    puts "--- Today's Todos ----"
-    todos.each { |todo_item| puts todo_item }
+    text = "---- #{title} ----\n"
+    text << @todos.map(&:to_s).join("\n")
+    text
   end
 
   def each
