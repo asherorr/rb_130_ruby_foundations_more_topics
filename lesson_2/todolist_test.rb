@@ -150,6 +150,10 @@ class TodoListTest < Minitest::Test
   end
 
   def test_select
+    @list.mark_done_at(0)
+    new_todo_list = @list.select { |item| item.done? }
+    assert_equal(new_todo_list.size, 1)
+    @list.mark_undone_at(0)
   end
 
 
