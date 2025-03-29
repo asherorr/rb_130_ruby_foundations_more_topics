@@ -1,7 +1,3 @@
-# - no size can be illegal
-# - a negative size will trigger an ArgumentError
-# - the sum of the lengths of ANY 2 sides must be greater than the length of the third side
-
 class Triangle
   attr_accessor :sides
 
