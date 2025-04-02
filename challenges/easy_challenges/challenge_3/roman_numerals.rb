@@ -1,4 +1,3 @@
-
 class RomanNumeral
   CONVERSION = {
     1 => ["I", "X", "C", "M"],
